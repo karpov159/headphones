@@ -1,0 +1,63 @@
+{
+    "headphones": [
+        {
+            "id": "1",
+            "img": "img/img1.svg",
+            "name": "Apple BYZ S852I",
+            "price": "2927 ₽",
+            "oldPrice": "3527 ₽",
+            "discount": "",
+            "rating": "4.7,"
+        },
+        {
+            "id": "1",
+            "img": "img/img1.svg",
+            "name": "Apple BYZ S852I",
+            "price": "2927 ₽",
+            "oldPrice": "3527 ₽",
+            "discount": "",
+            "rating": "4.7,"
+        },
+        {
+            "id": "1",
+            "img": "img/img1.svg",
+            "name": "Apple BYZ S852I",
+            "price": "2927 ₽",
+            "oldPrice": "3527 ₽",
+            "discount": "",
+            "rating": "4.7,"
+        },
+        {
+            "id": "1",
+            "img": "img/img1.svg",
+            "name": "Apple BYZ S852I",
+            "price": "2927 ₽",
+            "oldPrice": "3527 ₽",
+            "discount": "",
+            "rating": "4.7,"
+        },
+        {
+            "id": "1",
+            "img": "img/img1.svg",
+            "name": "Apple BYZ S852I",
+            "price": "2927 ₽",
+            "oldPrice": "3527 ₽",
+            "discount": "",
+            "rating": "4.7,"
+        },
+        {
+            "id": "1",
+            "img": "img/img1.svg",
+            "name": "Apple BYZ S852I",
+            "price": "2927 ₽",
+            "oldPrice": "3527 ₽",
+            "discount": "",
+            "rating": "4.7,"
+        }
+    ],
+    "wireless": [
+        {
+            
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+.header {
+    background-color: #EAEAEA;
+    padding-top: 15px;
+    &__wrapper {
+        display: flex;
+        height: 60px;
+        justify-content: space-between;
+    }
+    &__items {
+        width: 100px;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+    }
+    &__item {
+        position: relative;
+        // @include before_number;
+        img {
+            width: 23px;
+            height: 23px;
+            z-index: 1;
+        }
+        div {
+            position: absolute;
+            @include before_number;
+            left: 20px;
+            top: -7px;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 18px;
+            text-align: center;
+            color: #fff;
+            z-index: 3;
+        }
+    }
+}

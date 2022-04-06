@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #EAEAEA;
+
+} 
+
+
+.container {
+    width: 1110px;
+    margin: 0 auto;
+}
+.logo {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 30px;
+    color: #101010;
+}
+
+@mixin before_number {
+    &:before {
+        content: '';
+        position: absolute;
+        background: #FFA542;
+        width: 18px;
+        height: 18px;
+        top: -1px;
+        left: -6px;
+        border-radius: 100%;
+        z-index: -1;
+    }    
+}
+
+@import 'blocks/header';
+@import 'blocks/headphones';
+@import 'blocks/titles';
+@import 'blocks/footer';
+@import 'blocks/basket';

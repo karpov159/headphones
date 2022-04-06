@@ -1,0 +1,78 @@
+.headphones {
+    background: #EAEAEA;
+    &__wrapper {
+        display: grid;
+        grid-template:  407px / repeat(3, 350px);
+        grid-auto-rows: 407px;
+        gap: 30px;
+    }
+    &__item {
+        width: 350px;
+        height: 407px;
+        background: #FFFFFF;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 30px;
+        padding: 15px 22px 30px 22px;
+    }
+    &__img {
+        text-align: center;
+        margin-bottom: 55px;
+    }
+    &__info {
+        display: grid;
+        grid-template: repeat(2, auto) / repeat(2, auto);
+        gap: 25px 40px;
+    }
+    &__name {
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 21px;
+        color: #1C1C27;
+    }
+    &__price {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-end;
+        &-actual {
+            font-weight: 500;
+            font-size: 17px;
+            line-height: 21px;
+            color: #FFA542;
+            position: relative;
+            // padding-right: 25px;
+        }
+        span {
+            position: absolute;
+            left: 10%;
+            top: 100%;
+            font-weight: 500;
+            font-size: 13px;
+            line-height: 16px;
+            color: #FFCE7F;
+            text-decoration-line: line-through;
+        }
+        &-discount {
+            // padding-left: 25px;
+            // width: 200%;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+            color: #DF6464;
+        }
+    }
+    &__rating {
+        display: flex;
+        &-img {
+            margin-right: 10px;
+        }
+    }
+    &__buy {
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 21px;
+        color: #000000;
+        text-align: end;
+    }
+    
+}
