@@ -1,6 +1,6 @@
 .headphones {
     background: #EAEAEA;
-    &__wrapper {
+    &__wrapper, .wireless__wrapper {
         display: grid;
         grid-template:  407px / repeat(3, 350px);
         grid-auto-rows: 407px;
@@ -15,8 +15,15 @@
         padding: 15px 22px 30px 22px;
     }
     &__img {
-        text-align: center;
+        // text-align: center;
+        width: 220px;
+        height: 237px;
+        margin: 0 auto;
         margin-bottom: 55px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
     &__info {
         display: grid;
@@ -30,6 +37,7 @@
         color: #1C1C27;
     }
     &__price {
+        position: relative;
         display: flex;
         flex-direction: row;
         align-items: flex-end;
@@ -42,9 +50,10 @@
             position: relative;
             // padding-right: 25px;
         }
-        span {
+        &-old {
             position: absolute;
-            left: 10%;
+            display: inline;
+            left: 45%;
             top: 100%;
             font-weight: 500;
             font-size: 13px;
@@ -53,7 +62,7 @@
             text-decoration-line: line-through;
         }
         &-discount {
-            // padding-left: 25px;
+            padding-left: 25px;
             // width: 200%;
             font-weight: 500;
             font-size: 16px;
@@ -63,16 +72,21 @@
     }
     &__rating {
         display: flex;
+        align-items: center;
         &-img {
             margin-right: 10px;
         }
     }
     &__buy {
-        font-weight: 500;
+        display: flex;
+        font-weight: 700;
         font-size: 17px;
         line-height: 21px;
         color: #000000;
-        text-align: end;
+        text-decoration: none;
+        // text-align: end;
+        align-items: flex-end;
+        justify-content: flex-end;
     }
     
 }

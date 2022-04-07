@@ -20,17 +20,22 @@
             height: 23px;
             z-index: 1;
         }
-        div {
-            position: absolute;
-            @include before_number;
-            left: 20px;
-            top: -7px;
-            font-weight: 500;
-            font-size: 15px;
-            line-height: 18px;
-            text-align: center;
-            color: #fff;
-            z-index: 3;
-        }
     }
+    &__fav, &__num {
+        display: none;
+        position: absolute;
+        @include before_number;
+        left: 18px;
+        top: -7px;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 18px;
+        text-align: center;
+        color: #fff;
+        z-index: 3;
+    }
+
+    // &__fav, &__num {
+    //     display: none;
+    // }
 }

@@ -1,0 +1,86 @@
+{
+  "headphones": [
+  {
+    "id": "1",
+    "img": "img/img1.svg",
+    "name": "Apple BYZ S852I",
+    "price": "2927 ₽",
+    "oldPrice": "3527 ₽",
+    "discount": "",
+    "rating": "4.7"
+  },
+  {
+    "id": "2",
+    "img": "img/img2.svg",
+    "name": "Apple EarPods",
+    "price": "2327 ₽",
+    "oldPrice": "",
+    "discount": "",
+    "rating": "4.5"
+  },
+  {
+    "id": "3",
+    "img": "img/img3.svg",
+    "name": "Apple EarPods",
+    "price": "2327 ₽",
+    "oldPrice": "",
+    "discount": "",
+    "rating": "4.5"
+  },
+  {
+    "id": "4",
+    "img": "img/img1.svg",
+    "name": "Apple BYZ S852I",
+    "price": "2927 ₽",
+    "oldPrice": "",
+    "discount": "-20%",
+    "rating": "4.7"
+  },
+  {
+    "id": "5",
+    "img": "img/img2.svg",
+    "name": "Apple EarPods",
+    "price": "2327 ₽",
+    "oldPrice": "",
+    "discount": "",
+    "rating": "4.5"
+  },
+  {
+    "id": "6",
+    "img": "img/img3.svg",
+    "name": "Apple EarPods",
+    "price": "2327 ₽",
+    "oldPrice": "",
+    "discount": "",
+    "rating": "4.5"
+  }
+  ],
+"wireless": [
+  {
+    "id": "7",
+    "img": "img/img7.svg",
+    "name": "Apple BYZ S852I",
+    "price": "6527 ₽",
+    "oldPrice": "",
+    "discount": "",
+    "rating": "4.7"
+  },
+  {
+    "id": "8",
+    "img": "img/img8.svg",
+    "name": "GERLAX GH-04",
+    "price": "9527 ₽",
+    "oldPrice": "",
+    "discount": "",
+    "rating": "4.7"
+  },  {
+    "id": "9",
+    "img": "img/img9.svg",
+    "name": "BOROFONE BO4",
+    "price": "7527 ₽",
+    "oldPrice": "",
+    "discount": "",
+    "rating": "4.7"
+  }
+]
+}
