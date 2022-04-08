@@ -1,4 +1,13 @@
-window.addEventListener('DOMContentLoaded', () => {
+import {getCartData, setCartData, showMiniBasket} from '../services/services';
+
+function basket(parent) {
+
+    'use strict';
+
+    if (document.querySelector('body').getAttribute('data-title') == 'basket') {
+    
+    // функция показа мини-корзины
+    showMiniBasket();     
 
     // карточка товара
     class ItemBasket {
@@ -9,6 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
             this.price = price;
             this.num = num;
         }
+
         // помещаем на страницу
         render() {
             const div = document.createElement('div');
@@ -36,69 +46,11 @@ window.addEventListener('DOMContentLoaded', () => {
             </div>
             `;
             document.querySelector('.basket__items').append(div);    
-        }
-    }
-
-
-
-
-    // создание карточек товаров
-    function createCards() {
-        const itemsToDelete = document.querySelectorAll('.basket__item');
-        itemsToDelete.forEach(item => item.remove());
-
-        const cardData = JSON.parse(sessionStorage.getItem('cart'));
-        // console.log(cardData);
-        for (let items in cardData) {
-            new ItemBasket(items, cardData[items]).render();
-            // console.log(items);
-        }
-        totalSum();
-
-    }
-    createCards();
-
-    // обработка событий по клику на плюс и минус
-    const parentBasket = document.querySelector('.basket');
-
-    parentBasket.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = e.target;
-        // console.log(document.querySelectorAll('.basket__item-minus'));
-
-        // обработчик события
-        function addEvent(selector, func) {
-            if (target && target.classList.contains(selector.slice(1))) {
-                document.querySelectorAll(selector).forEach((btn, i) => {
-                    if (target == btn) {
-                        const num = document.querySelectorAll('.basket__item')[i].getAttribute('data-id');
-                        func(num);
-                        
-                    }
-                });
             }
         }
 
-        // навешиваем обработчики на кнопку плюс, минус и удалить товар
-        addEvent('.basket__item-minus', minusGoods);
-        addEvent('.basket__item-plus', plusGoods);
-        addEvent('.basket__item-delete', deleteGoods);
-
-    });
-
-    // получаем данные из корзины
-    function getCartData(){
-        return JSON.parse(sessionStorage.getItem('cart'));
-    }
-
-    // Записываем данные в sessionstorage
-    function setCartData(item) {
-    sessionStorage.setItem('cart', JSON.stringify(item));
-    return false;
-    }
-
     // уменьшаем кол-во товара в sessionstorage и на странице
-    function minusGoods(num) {
+    const minusGoods = (num) => {
         // получаем корзину
         let  cardData = getCartData();
         // получаем айтем и его внутренности
@@ -121,11 +73,12 @@ window.addEventListener('DOMContentLoaded', () => {
         totalSum();
         // перезаписываем данные в sessionstorage
         setCartData(cardData);
+        // Обновляем мини-корзину
         showMiniBasket();
-    }
+    };
 
 
-    function plusGoods(num) {
+    const plusGoods = (num) => {
         // получаем корзину
         let  cardData = getCartData();
         // получаем айтем и его внутренности
@@ -135,7 +88,6 @@ window.addEventListener('DOMContentLoaded', () => {
             result = parent.querySelector('.basket__item-result');
         
         // уменьшаем кол-во на странице
-        console.log(typeof(sum));
         sum.innerHTML++;
         // уменьшаем кол-во в корзине
         cardData[num][3] += 1;
@@ -146,10 +98,11 @@ window.addEventListener('DOMContentLoaded', () => {
         totalSum();
         // перезаписываем данные в sessionstorage
         setCartData(cardData);
+        // Обновляем мини-корзину
         showMiniBasket();
-    }
+    };
 
-    function deleteGoods(num) {
+    const deleteGoods = (num) => {
         // получаем корзину
         let  cardData = getCartData();
         const parent = document.querySelector(`[data-id="${num}"]`);
@@ -162,51 +115,69 @@ window.addEventListener('DOMContentLoaded', () => {
         totalSum();
         // перезаписываем данные в sessionstorage
         setCartData(cardData);
+        // Обновляем мини-корзину
         showMiniBasket();
-    }
+    };
 
     // подсчет общей стоимости товаров
-    function totalSum() {
+    const totalSum = () => {
         const prices = document.querySelectorAll('.basket__item-result'),
                 total = document.querySelector('.basket__price');
+        
         let sum = 0;
-
+        // перебираем все цены и складываем значение
         prices.forEach(price => {
             sum += +price.innerHTML.replace(/\D/g, ''); 
         });
+        // помещаем значение на страницу
         total.innerHTML = `${sum} ₽`;
-    }
+    };
 
     // подсчет стоимости каждого товара
-    function sumItem(parent) {
+    const sumItem = (parent) => {
         const price = +parent.querySelector('.basket__item-price').innerHTML.replace(/\D/g,''),
                 num = +parent.querySelector('.basket__item-number').innerHTML;
 
-        // console.log(price, num);
         return price * num;
-    }
-    
+    };
 
-    // обновляем мини-корзину
-
-    function showMiniBasket() {
-        const cardData = getCartData(),
-              miniBasket = document.querySelector('.header__num');
-        let sum = 0;
-
+    // создание карточек товаров
+    const createCards = () => {
+        const cardData = JSON.parse(sessionStorage.getItem('cart'));
         for (let items in cardData) {
-            sum += cardData[items][3];
+            new ItemBasket(items, cardData[items]).render();
+        }
+        totalSum();
+
+    };
+    createCards();
+
+    // обработка событий по клику на плюс и минус
+    document.querySelector(parent).addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = e.target;
+
+        // обработчик события
+        function addEvent(selector, func) {
+            if (target && target.classList.contains(selector.slice(1))) {
+                document.querySelectorAll(selector).forEach((btn, i) => {
+                    if (target == btn) {
+                        const num = document.querySelectorAll('.basket__item')[i].getAttribute('data-id');
+                        func(num);
+                        
+                    }
+                });
+            }
         }
 
-        if (sum > 0) {
-            miniBasket.style.display = "block";
-        } else {
-            miniBasket.style.display = "none";
+        // навешиваем обработчики на кнопку плюс, минус и удалить товар
+        addEvent('.basket__item-minus', minusGoods);
+        addEvent('.basket__item-plus', plusGoods);
+        addEvent('.basket__item-delete', deleteGoods);
 
-        }
-        miniBasket.innerHTML = sum;
+    });
+    
     }
-    showMiniBasket();
+}
 
-     
-});
+export default basket;

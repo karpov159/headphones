@@ -1,7 +1,13 @@
-window.addEventListener('DOMContentLoaded', () => {
+import {getCartData, setCartData, showMiniBasket} from '../services/services';
+ 
+function goods(parent) {
+    'use strict';
 
+    if (document.querySelector('body').getAttribute('data-title') == 'goods') {
 
-    // карточки товаров
+    showMiniBasket();
+
+     // карточки товаров
     class Item {
         constructor(id, img, name, price, oldPrice, discount, rating, parentSelector) {
             this.id = id;
@@ -41,10 +47,10 @@ window.addEventListener('DOMContentLoaded', () => {
             `;
             this.parent.append(div);
         }
-    }
+}
 
-    // помещение карточек на страницу
-    function placeCards(url, parent) {
+// получение данных о товаре из дб и помещение на страницу
+    const placeCards= (url, parent) => {
         fetch(url)
         .then(data => data.json())
         .then(data => {
@@ -52,24 +58,14 @@ window.addEventListener('DOMContentLoaded', () => {
                 new Item(id, img, name, price, oldPrice, discount, rating, parent).render();  
         });
         });
-    }
+    };
+    // Для наушников
     placeCards('http://localhost:3000/headphones', '.headphones__wrapper');
+    // для беспроводных
     placeCards('http://localhost:3000/wireless', '.wireless__wrapper');
 
-    // получаем данные из корзины
-    function getCartData(){
-        return JSON.parse(sessionStorage.getItem('cart'));
-    }
-      // Записываем данные в LocalStorage
-    function setCartData(item){
-    sessionStorage.setItem('cart', JSON.stringify(item));
-    return false;
-    }
-
     // обработчик на кнопку
-    const parent = document.querySelector('.headphones');
-
-    parent.addEventListener('click', (e) => {
+    document.querySelector(parent).addEventListener('click', (e) => {
         e.preventDefault();
         const target = e.target;
 
@@ -98,57 +94,25 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     // получение данных выбранного товара
-    function getData(num) {
-        const item = document.querySelectorAll('.headphones__item');
+    const getData = (num) => {
+        const item = document.querySelectorAll('.headphones__item'),
 
-        this.img = item[num].querySelector('.headphones__img img').getAttribute('src');
-        this.name = item[num].querySelector('.headphones__name').innerHTML;
-        this.price = item[num].querySelector('.headphones__price-actual').innerHTML.replace(/\D/g,'');
-        this.id = item[num].querySelector('.headphones__buy').getAttribute('data-id');
+        img = item[num].querySelector('.headphones__img img').getAttribute('src'),
+        name = item[num].querySelector('.headphones__name').innerHTML,
+        price = item[num].querySelector('.headphones__price-actual').innerHTML.replace(/\D/g,''),
+        id = item[num].querySelector('.headphones__buy').getAttribute('data-id');
         return {
-            img: this.img,
-            name: this.name,
-            price: this.price,
-            id: this.id
+            img: img,
+            name: name,
+            price: price,
+            id: id
         };
-    }
-
-    // обновляем мини-корзину
-    function showMiniBasket() {
-        // получаем данные из корзины и саму корзину
-        const cardData = getCartData(),
-              miniBasket = document.querySelector('.header__num');
-        let sum = 0;
-
-        // суммируем количество товаров в корзине
-        for (let items in cardData) {
-            sum += cardData[items][3];
-        }
-
-        // если товаров больше 0, показываем элемент на странице
-        if (sum > 0) {
-            miniBasket.style.display = "block";
-        } else {
-            miniBasket.style.display = "none";
+    };
 
         }
-        // помещаем сумму в элемент
-        miniBasket.innerHTML = sum;
     }
-    showMiniBasket();
-});
+
+export default goods;
 
 
 
-
-function test(word) {
-    console.log(word)
-}
-
-function hello(fun, word) {
-    fun(word);
-}
-
-hello(test, 'fdfd');
-
-console.log('.basket__item-minus'.slice(1))
